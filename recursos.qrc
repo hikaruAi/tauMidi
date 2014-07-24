@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="Iconos">
+    <file>ico.png</file>
+    <file>ListTrackIco.png</file>
+  </qresource>
+</RCC>

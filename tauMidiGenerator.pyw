@@ -10,7 +10,7 @@ from tauMidi_Mainwindow import Ui_tauMidiGenerator_Mainwindow
 # #############CLASSES########
 class InternalSimpleTrack(object):
     def __init__(self):
-        self.name = "Track1"
+        self.name = "NEW TRACK"
         self.initValue = 0
         self.loops = 100
         self.channel = 0
@@ -66,6 +66,14 @@ def updateUiFromInternalList():
     ui.track_init_spinbox.setValue(trackInternalList[currentTrack].initValue)
     ui.track_loops_spinbox.setValue(trackInternalList[currentTrack].loops)
     ui.track_channel_spinbox.setValue(trackInternalList[currentTrack].channel)
+    ui.track_clamp_spinbox.setValue(trackInternalList[currentTrack].clamp)
+    ui.randomSeed_spinbox.setValue(trackInternalList[currentTrack].randomSeed)
+    ui.pitch_textfield.setText(trackInternalList[currentTrack].pitch)
+    ui.time_textfield.setText(trackInternalList[currentTrack].time)
+    ui.duration_textfield.setText(trackInternalList[currentTrack].duration)
+    ui.volume_textfield.setText(trackInternalList[currentTrack].volume)
+    print("-------------------------ui->Inter----------------------")
+    print(trackInternalList)
 
 
 def updateInternalListFromUI():
@@ -79,9 +87,9 @@ def updateInternalListFromUI():
     trackInternalList[currentTrack].clamp = ui.track_clamp_spinbox.value()
     trackInternalList[currentTrack].pitch = ui.pitch_textfield.text()
     trackInternalList[currentTrack].time = ui.time_textfield.text()
-    trackInternalList[currentTrack].time = ui.duration_textfield.text()
     trackInternalList[currentTrack].duration = ui.duration_textfield.text()
     trackInternalList[currentTrack].volume = ui.volume_textfield.text()
+    print("-----------------IN->UI----------------")
     print(trackInternalList)
 
 
@@ -104,13 +112,13 @@ def setConnections():
 ###########Event functions###############
 def itemChanged(i):
     global currentTrack
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
     print("Item changed in:", currentTrack, " changed-> new text():", i.text())
 
 
 def currentRowChanged(r):
     global currentTrack
-    currentTrack = r
+    currentTrack=r
     updateUiFromInternalList()
     print("Current row changed:", currentTrack)
 
@@ -122,10 +130,11 @@ def addTrackClicked():
     count = ui.tracList_list.count()
     oldItem = ui.tracList_list.item(count - 1)
     newItem = oldItem.clone()
-    newItem.setText("Track 0" + str(count + 1))
+    trackInternalList.append(InternalSimpleTrack())
+    trackInternalList[-1].name+=" "+str(count)
+    newItem.setText(trackInternalList[-1].name)
     ui.tracList_list.addItem(newItem)
     ui.tracList_list.setCurrentRow(count)
-    trackInternalList.append(InternalSimpleTrack())
     print("Added Track: ", count, " with text:", newItem.text())
 
 
@@ -139,54 +148,60 @@ def browseClicked():
 
 def initSpinBoxChanged(v):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].initValue=v
     print("Init changed:", v, "in track->", currentTrack)
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
 
 
 def loopsSpinBoxChanged(v):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].loops=v
     print("LoopsChanged:", v, "in track->", currentTrack)
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
 
 
 def channelSpinBoxChanged(v):
     global currentTrack
     print("ChannelChanged:", v, "in track->", currentTrack)
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
 
 
 def randomSeedSpinBoxChanged(v):
     global currentTrack
     print("RandomSeedBoxChanged:", v, "in track->", currentTrack)
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
 
 
 def clampSpinBoxChanged(v):
     global currentTrack
     print("Clamp changed:", v, "in track->", currentTrack)
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
 
 
 def pitchTextChanged(s):
     global currentTrack
+    #updateInternalListFromUI()
     print("Pitch changed:", s, "in track->", currentTrack)
 
 
 def timeTextChanged(s):
     global currentTrack
+    #updateInternalListFromUI()
     print("Time changed:", s, "in track->", currentTrack)
 
 
 def durationTextChanged(s):
     global currentTrack
     print("Duration changed:", s, "in track->", currentTrack)
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
 
 
 def volumeTextChanged(s):
     global currentTrack
     print("Volume changed:", s, "in track->", currentTrack)
-    updateInternalListFromUI()
+    #updateInternalListFromUI()
 
 
 ######################MAIN##########################3

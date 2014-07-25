@@ -26,21 +26,11 @@
       <file leaf-file-name="tauMidiGenerator.pyw" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tauMidiGenerator.pyw">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49318182" vertical-offset="922" max-vertical-offset="3604">
-              <caret line="67" column="78" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.31578946" vertical-offset="2435" max-vertical-offset="3859">
+              <caret line="151" column="39" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
               <folding>
                 <element signature="e#12#62#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tauMidi_Mainwindow.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tauMidi_Mainwindow.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3230" max-vertical-offset="4165">
-              <caret line="190" column="24" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -157,7 +147,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Blender Manager 3/BatchRender.pyw" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Blender-Manager/BatchRender.pyw" />
     <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="LayoutCode.rearrangeEntriesPython" value="false" />
@@ -351,26 +341,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="576" extended-state="6" />
+    <frame x="-8" y="-8" width="1040" height="576" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3251121" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31196582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25390625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6764045" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3653846" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="147" width="1024" height="174" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58295965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="147" width="1024" height="174" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -395,6 +385,32 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tauMidiGenerator.pyw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="968" max-vertical-offset="3757">
+          <caret line="74" column="58" selection-start-line="74" selection-start-column="58" selection-end-line="74" selection-end-column="58" />
+          <folding>
+            <element signature="e#12#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tauMidi_Mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3230" max-vertical-offset="4165">
+          <caret line="190" column="24" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../autoMidi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tauMidiGenerator.pyw">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1022" max-vertical-offset="2601">
@@ -509,10 +525,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Blender-Manager/BatchRender.pyw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.331565" vertical-offset="14903" max-vertical-offset="15402">
+          <caret line="885" column="30" selection-start-line="885" selection-start-column="25" selection-end-line="885" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tauMidiGenerator.pyw">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49318182" vertical-offset="922" max-vertical-offset="3604">
-          <caret line="67" column="78" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.31578946" vertical-offset="2435" max-vertical-offset="3859">
+          <caret line="151" column="39" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
           <folding>
             <element signature="e#12#62#0" expanded="true" />
           </folding>

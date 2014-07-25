@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'tauMidi_Mainwindow.ui'
 #
-# Created: Tue Jul 15 18:41:04 2014
+# Created: Thu Jul 24 18:56:18 2014
 #      by: PyQt5 UI code generator 5.3.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,6 +38,9 @@ class Ui_tauMidiGenerator_Mainwindow(object):
         self.tracList_list.setGeometry(QtCore.QRect(10, 20, 151, 141))
         self.tracList_list.setObjectName("tracList_list")
         item = QtWidgets.QListWidgetItem()
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/Iconos/ListTrackIco.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        item.setIcon(icon1)
         item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEditable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
         self.tracList_list.addItem(item)
         self.addTrack_button = QtWidgets.QPushButton(self.TrackList_groupbox)

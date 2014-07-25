@@ -41,7 +41,7 @@ class InternalSimpleTrack(object):
         s += "**************"
         return (s)
 
-##############Global variables#######
+# #############Global variables#######
 MyMusic = "C:\\Users"
 trackInternalList = []
 trackInternalList.append(InternalSimpleTrack())
@@ -105,20 +105,24 @@ def setConnections():
     ui.duration_textfield.textChanged.connect(durationTextChanged)
     ui.volume_textfield.textChanged.connect(volumeTextChanged)
     ui.addTrack_button.clicked.connect(addTrackClicked)
+    ui.deleteTrack_button.clicked.connect(deletTrackClicked)
     ui.tracList_list.currentRowChanged.connect(currentRowChanged)
     ui.tracList_list.itemChanged.connect(itemChanged)
 
 
 ###########Event functions###############
+
 def itemChanged(i):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].name = i.text()
     #updateInternalListFromUI()
     print("Item changed in:", currentTrack, " changed-> new text():", i.text())
 
 
 def currentRowChanged(r):
     global currentTrack
-    currentTrack=r
+    currentTrack = r
     updateUiFromInternalList()
     print("Current row changed:", currentTrack)
 
@@ -126,17 +130,24 @@ def currentRowChanged(r):
 def addTrackClicked():
     global currentTrack
     global trackInternalList
-
     count = ui.tracList_list.count()
     oldItem = ui.tracList_list.item(count - 1)
     newItem = oldItem.clone()
     trackInternalList.append(InternalSimpleTrack())
-    trackInternalList[-1].name+=" "+str(count)
+    trackInternalList[-1].name += " " + str(count)
     newItem.setText(trackInternalList[-1].name)
     ui.tracList_list.addItem(newItem)
     ui.tracList_list.setCurrentRow(count)
     print("Added Track: ", count, " with text:", newItem.text())
 
+
+def deletTrackClicked():
+    global currentTrack
+    global trackInternalList
+    i=ui.tracList_list.takeItem(currentTrack)
+    i=None
+    del trackInternalList[currentTrack]
+    
 
 def browseClicked():
     print("Browse File name Clicked")
@@ -149,7 +160,7 @@ def browseClicked():
 def initSpinBoxChanged(v):
     global currentTrack
     global trackInternalList
-    trackInternalList[currentTrack].initValue=v
+    trackInternalList[currentTrack].initValue = v
     print("Init changed:", v, "in track->", currentTrack)
     #updateInternalListFromUI()
 
@@ -157,49 +168,63 @@ def initSpinBoxChanged(v):
 def loopsSpinBoxChanged(v):
     global currentTrack
     global trackInternalList
-    trackInternalList[currentTrack].loops=v
+    trackInternalList[currentTrack].loops = v
     print("LoopsChanged:", v, "in track->", currentTrack)
     #updateInternalListFromUI()
 
 
 def channelSpinBoxChanged(v):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].channel = v
     print("ChannelChanged:", v, "in track->", currentTrack)
     #updateInternalListFromUI()
 
 
 def randomSeedSpinBoxChanged(v):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].randomSeed = v
     print("RandomSeedBoxChanged:", v, "in track->", currentTrack)
     #updateInternalListFromUI()
 
 
 def clampSpinBoxChanged(v):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].clamp = v
     print("Clamp changed:", v, "in track->", currentTrack)
     #updateInternalListFromUI()
 
 
 def pitchTextChanged(s):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].pitch = s
     #updateInternalListFromUI()
     print("Pitch changed:", s, "in track->", currentTrack)
 
 
 def timeTextChanged(s):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].time = s
     #updateInternalListFromUI()
     print("Time changed:", s, "in track->", currentTrack)
 
 
 def durationTextChanged(s):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].duration = s
     print("Duration changed:", s, "in track->", currentTrack)
     #updateInternalListFromUI()
 
 
 def volumeTextChanged(s):
     global currentTrack
+    global trackInternalList
+    trackInternalList[currentTrack].volume = s
     print("Volume changed:", s, "in track->", currentTrack)
     #updateInternalListFromUI()
 

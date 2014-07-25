@@ -94,6 +94,10 @@
       <property name="text">
        <string>Track 01</string>
       </property>
+      <property name="icon">
+       <iconset resource="recursos.qrc">
+        <normaloff>:/Iconos/ListTrackIco.png</normaloff>:/Iconos/ListTrackIco.png</iconset>
+      </property>
       <property name="flags">
        <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
       </property>

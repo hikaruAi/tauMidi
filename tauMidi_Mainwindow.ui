@@ -7,8 +7,26 @@
     <x>0</x>
     <y>0</y>
     <width>580</width>
-    <height>411</height>
+    <height>401</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>580</width>
+    <height>401</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>580</width>
+    <height>401</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>tau Midi Generator - File name</string>
@@ -16,6 +34,9 @@
   <property name="windowIcon">
    <iconset resource="recursos.qrc">
     <normaloff>:/Iconos/ico.png</normaloff>:/Iconos/ico.png</iconset>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="filename_grouBoc">
@@ -41,6 +62,9 @@
      </property>
      <property name="text">
       <string>Browse</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLineEdit" name="fileName_textfield">
@@ -73,9 +97,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
+      <y>140</y>
       <width>261</width>
-      <height>181</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="title">
@@ -87,7 +111,7 @@
        <x>10</x>
        <y>20</y>
        <width>151</width>
-       <height>141</height>
+       <height>111</height>
       </rect>
      </property>
      <item>
@@ -120,7 +144,7 @@
      <property name="geometry">
       <rect>
        <x>170</x>
-       <y>80</y>
+       <y>70</y>
        <width>75</width>
        <height>51</height>
       </rect>
@@ -129,6 +153,10 @@
       <string>Delete Track</string>
      </property>
     </widget>
+    <zorder>tracList_list</zorder>
+    <zorder>addTrack_button</zorder>
+    <zorder>deleteTrack_button</zorder>
+    <zorder>filename_grouBoc</zorder>
    </widget>
    <widget class="QGroupBox" name="trackAtributes_goupbox">
     <property name="geometry">
@@ -421,6 +449,9 @@
     </widget>
    </widget>
    <widget class="QPushButton" name="generate_button">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -431,6 +462,12 @@
     </property>
     <property name="text">
      <string>Generate</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QGroupBox" name="options_groupbox">
@@ -493,6 +530,41 @@
       <bool>true</bool>
      </property>
     </widget>
+   </widget>
+   <widget class="QLabel" name="tempo_label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Main Tempo:</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="tempo_spin">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>100</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::PlusMinus</enum>
+    </property>
+    <property name="maximum">
+     <number>10000</number>
+    </property>
+    <property name="singleStep">
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>120</number>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menu">

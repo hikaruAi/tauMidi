@@ -5,6 +5,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import os
 from random import *
+from math import *
+from time import time
 from tauMidi_Mainwindow import Ui_tauMidiGenerator_Mainwindow
 
 # #############CLASSES########
@@ -108,9 +110,56 @@ def setConnections():
     ui.deleteTrack_button.clicked.connect(deletTrackClicked)
     ui.tracList_list.currentRowChanged.connect(currentRowChanged)
     ui.tracList_list.itemChanged.connect(itemChanged)
+    ui.fileName_textfield.textChanged.connect(fileTextChanged)
+    ui.generate_button.clicked.connect(generateClicked)
 
+def makeTrack(startAt=0,loops=100,track=0,channel=0,pitch="x",time="x",duration="0.5*x",volume="x",clamp=255, initSeed=0):
+    seed(initSeed)
+    tempNoteList=[]
+    for x in range(0,loops):
+        pit=pitch.replace("x",str(x))
+        ti=time.replace("x",str(x))
+        du=duration.replace("x",str(x))
+        vo=volume.replace("x",str(x))
+        ##########################
+        p=int(abs(eval(pit)))
+        if p>clamp: p=clamp
+        t=abs(eval(ti))
+        d=abs(eval(du))
+        v=int(abs(eval(vo)))
+        #print(pi,ti,du,vo)
+        tempNotesDict={"c":channel,"p":p,"t":t,"d":d,"v":v}
+        tempNoteList.append(tempNotesDict)
+    return tempNoteList
 
 ###########Event functions###############
+#mjairobenito@gmail.
+def generateClicked():
+    time0=time()
+    global trackInternalList
+    tempMidi=MIDIFile(len(trackInternalList))
+    for t in range(0,len(trackInternalList)):
+        tempMidi.addTempo(t,0,ui.tempo_spin.value())
+        workTrack=trackInternalList[t]
+        tempMidi.addTrackName(t,0,workTrack.name)
+        workDict=makeTrack(workTrack.initValue,workTrack.loops,t,workTrack.channel,workTrack.pitch,workTrack.time,workTrack.duration,workTrack.volume,workTrack.clamp,workTrack.randomSeed)
+        #workdict es una lista de diccionarios
+        for n in workDict :
+            tempMidi.addNote(t,n["c"],n["p"],n["t"],n["d"],n["v"])
+    midiBin=open(ui.fileName_textfield.text(),"wb")
+    tempMidi.writeFile(midiBin)
+    midiBin.close()
+    print("Midi object generated in: ",time()-time0, " seconds")
+
+
+
+
+def fileTextChanged(s):
+    if ui.fileName_textfield.text()!="" and( "\\" in ui.fileName_textfield.text() or "/" in ui.fileName_textfield.text()):
+        ui.generate_button.setEnabled(True)
+    else:
+        ui.generate_button.setEnabled(False)
+
 
 def itemChanged(i):
     global currentTrack
@@ -142,12 +191,16 @@ def addTrackClicked():
 
 
 def deletTrackClicked():
-    global currentTrack
-    global trackInternalList
-    i=ui.tracList_list.takeItem(currentTrack)
-    i=None
-    del trackInternalList[currentTrack]
-    
+    if ui.tracList_list.count()<2:
+        print("No track to delete")
+    else:
+        global currentTrack
+        global trackInternalList
+        i=ui.tracList_list.takeItem(currentTrack)
+        i=None
+        del trackInternalList[currentTrack]
+        ui.tracList_list.setCurrentRow(currentTrack)
+
 
 def browseClicked():
     print("Browse File name Clicked")

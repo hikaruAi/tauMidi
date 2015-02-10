@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>580</width>
+    <width>681</width>
     <height>401</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>580</width>
+    <width>650</width>
     <height>401</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>580</width>
+    <width>700</width>
     <height>401</height>
    </size>
   </property>
@@ -153,10 +153,6 @@
       <string>Delete Track</string>
      </property>
     </widget>
-    <zorder>tracList_list</zorder>
-    <zorder>addTrack_button</zorder>
-    <zorder>deleteTrack_button</zorder>
-    <zorder>filename_grouBoc</zorder>
    </widget>
    <widget class="QGroupBox" name="trackAtributes_goupbox">
     <property name="geometry">
@@ -324,7 +320,7 @@
      <rect>
       <x>280</x>
       <y>150</y>
-      <width>291</width>
+      <width>391</width>
       <height>141</height>
      </rect>
     </property>
@@ -381,6 +377,12 @@
        <width>221</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="text">
       <string>x/2</string>
@@ -445,6 +447,58 @@
      </property>
      <property name="clearButtonEnabled">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pitch_button">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>20</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Auto Pitch</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="time_button">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>50</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Auto Time</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="duration_button">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>80</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Auto Duration</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="volume_button">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>110</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Auto Volume</string>
      </property>
     </widget>
    </widget>
@@ -566,13 +620,29 @@
      <number>120</number>
     </property>
    </widget>
+   <widget class="QLabel" name="imagen">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>20</y>
+      <width>101</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="recursos.qrc">:/Iconos/ListTrackIco.png</pixmap>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menu">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>580</width>
+     <width>681</width>
      <height>21</height>
     </rect>
    </property>

@@ -8,6 +8,7 @@ from random import *
 from math import *
 from time import time
 from tauMidi_Mainwindow import Ui_tauMidiGenerator_Mainwindow
+import functionGenerator
 
 # #############CLASSES########
 class InternalSimpleTrack(object):
@@ -49,14 +50,14 @@ trackInternalList = []
 trackInternalList.append(InternalSimpleTrack())
 currentTrack = 0
 
-###############GLOBAL FUNCTIONS###############
+# ##############GLOBAL FUNCTIONS###############
 def formatear(s="x"):
     sLower = s.lower()
     sSinLlave1 = sLower.replace("[", "(")
     sSinLlave2 = sSinLlave1.replace("]", ")")
     sSinPleca = sSinLlave2.replace("^", "**")
     sFinal = sSinPleca
-    #if sFinal=="":
+    # if sFinal=="":
     #   sFinal="randint("+str(randint(0,100))+","+str(randint(0,100))+")"
     return (sFinal)
 
@@ -112,50 +113,109 @@ def setConnections():
     ui.tracList_list.itemChanged.connect(itemChanged)
     ui.fileName_textfield.textChanged.connect(fileTextChanged)
     ui.generate_button.clicked.connect(generateClicked)
+    ui.pitch_button.clicked.connect(onPitchButton)
+    ui.time_button.clicked.connect(onTimeButton)
+    ui.duration_button.clicked.connect(onDurationButton)
+    ui.volume_button.clicked.connect(onVolumeButton)
 
-def makeTrack(startAt=0,loops=100,track=0,channel=0,pitch="x",time="x",duration="0.5*x",volume="x",clamp=255, initSeed=0):
+
+def onVolumeButton():
+    ui.volume_textfield.setText(str(functionGenerator.DefaultRandomFunction()))
+
+
+def onDurationButton():
+    ui.duration_textfield.setText(str(functionGenerator.DefaultRandomFunction()))
+
+
+def onTimeButton():
+    ui.time_textfield.setText(str(functionGenerator.DefaultRandomFunction()))
+
+
+def onPitchButton():
+    ui.pitch_textfield.setText(str(functionGenerator.DefaultRandomFunction()))
+
+
+def makeTrack(startAt=0, loops=100, track=0, channel=0, pitch="x", time="x", duration="0.5*x", volume="x", clamp=255,
+              initSeed=0):
     seed(initSeed)
-    tempNoteList=[]
-    for x in range(0,loops):
-        pit=pitch.replace("x",str(x))
-        ti=time.replace("x",str(x))
-        du=duration.replace("x",str(x))
-        vo=volume.replace("x",str(x))
-        ##########################
-        p=int(abs(eval(pit)))
-        if p>clamp: p=clamp
-        t=abs(eval(ti))
-        d=abs(eval(du))
-        v=int(abs(eval(vo)))
+    tempNoteList = []
+    for x in range(0, loops):
+        pit = pitch.replace("x", str(x))
+        ti = time.replace("x", str(x))
+        du = duration.replace("x", str(x))
+        vo = volume.replace("x", str(x))
+        # #########################
+        try:
+            p = int(abs(eval(pit)))
+            if p > clamp: p = clamp
+        except:
+            m=QtWidgets.QMessageBox()
+            m.setText("Error evaluating Pitch")
+            m.setDetailedText("An error occured evaluating pitch:\n"+pit)
+            m.setWindowTitle("Error")
+            m.exec()
+            break
+        try:
+            t = abs(eval(ti))
+        except:
+            m=QtWidgets.QMessageBox()
+            m.setText("Error evaluating Time")
+            m.setDetailedText("An error occured evaluating time:\n"+ti)
+            m.setWindowTitle("Error")
+            m.exec()
+            break
+        try:
+            d = abs(eval(du))
+        except:
+            m=QtWidgets.QMessageBox()
+            m.setText("Error evaluating Duration")
+            m.setDetailedText("An error occured evaluating duration:\n"+du)
+            m.setWindowTitle("Error")
+            m.exec()
+            break
+        try:
+            v = int(abs(eval(vo)))
+        except:
+            m=QtWidgets.QMessageBox()
+            m.setText("Error evaluating Volumen")
+            m.setDetailedText("An error occured evaluating volume:\n"+vo)
+            m.setWindowTitle("Error")
+            m.exec()
+            break
         #print(pi,ti,du,vo)
-        tempNotesDict={"c":channel,"p":p,"t":t,"d":d,"v":v}
-        tempNoteList.append(tempNotesDict)
+        try:
+            tempNotesDict = {"c": channel, "p": p, "t": t, "d": d, "v": v}
+            tempNoteList.append(tempNotesDict)
+        except:
+            pass
     return tempNoteList
 
-###########Event functions###############
+
+# ##########Event functions###############
 #mjairobenito@gmail.
 def generateClicked():
-    time0=time()
+    time0 = time()
     global trackInternalList
-    tempMidi=MIDIFile(len(trackInternalList))
-    for t in range(0,len(trackInternalList)):
-        tempMidi.addTempo(t,0,ui.tempo_spin.value())
-        workTrack=trackInternalList[t]
-        tempMidi.addTrackName(t,0,workTrack.name)
-        workDict=makeTrack(workTrack.initValue,workTrack.loops,t,workTrack.channel,workTrack.pitch,workTrack.time,workTrack.duration,workTrack.volume,workTrack.clamp,workTrack.randomSeed)
+    tempMidi = MIDIFile(len(trackInternalList))
+    for t in range(0, len(trackInternalList)):
+        tempMidi.addTempo(t, 0, ui.tempo_spin.value())
+        workTrack = trackInternalList[t]
+        tempMidi.addTrackName(t, 0, workTrack.name)
+        workDict = makeTrack(workTrack.initValue, workTrack.loops, t, workTrack.channel, workTrack.pitch,
+                             workTrack.time, workTrack.duration, workTrack.volume, workTrack.clamp,
+                             workTrack.randomSeed)
         #workdict es una lista de diccionarios
-        for n in workDict :
-            tempMidi.addNote(t,n["c"],n["p"],n["t"],n["d"],n["v"])
-    midiBin=open(ui.fileName_textfield.text(),"wb")
+        for n in workDict:
+            tempMidi.addNote(t, n["c"], n["p"], n["t"], n["d"], n["v"])
+    midiBin = open(ui.fileName_textfield.text(), "wb")
     tempMidi.writeFile(midiBin)
     midiBin.close()
-    print("Midi object generated in: ",time()-time0, " seconds")
-
-
+    print("Midi object generated in: ", time() - time0, " seconds")
 
 
 def fileTextChanged(s):
-    if ui.fileName_textfield.text()!="" and( "\\" in ui.fileName_textfield.text() or "/" in ui.fileName_textfield.text()):
+    if ui.fileName_textfield.text() != "" and (
+                    "\\" in ui.fileName_textfield.text() or "/" in ui.fileName_textfield.text()):
         ui.generate_button.setEnabled(True)
     else:
         ui.generate_button.setEnabled(False)
@@ -191,13 +251,13 @@ def addTrackClicked():
 
 
 def deletTrackClicked():
-    if ui.tracList_list.count()<2:
+    if ui.tracList_list.count() < 2:
         print("No track to delete")
     else:
         global currentTrack
         global trackInternalList
-        i=ui.tracList_list.takeItem(currentTrack)
-        i=None
+        i = ui.tracList_list.takeItem(currentTrack)
+        i = None
         del trackInternalList[currentTrack]
         ui.tracList_list.setCurrentRow(currentTrack)
 
